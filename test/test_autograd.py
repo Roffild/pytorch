@@ -3057,6 +3057,10 @@ class TestAutograd(TestCase):
         keys = dir(x)
         self.assertIn('shape', keys)
 
+        # imag is only implemented for complex tensors.
+        self.assertRaises(RuntimeError, lambda: hasattr(x, 'imag'))
+        keys.remove('imag')
+
         for key in keys:
             self.assertTrue(hasattr(x, key))
 
