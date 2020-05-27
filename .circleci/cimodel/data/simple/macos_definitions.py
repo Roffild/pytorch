@@ -17,7 +17,7 @@ class MacOsJob:
 
         test_build_dependency = "_".join(non_phase_parts + ["build"])
         extra_dependencies = [test_build_dependency] if self.is_test else []
-        job_dependencies = ["setup"] + extra_dependencies
+        job_dependencies = extra_dependencies
 
         props_dict = {
             "requires": job_dependencies,
